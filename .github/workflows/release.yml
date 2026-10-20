@@ -1,0 +1,87 @@
+name: Release
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    # Self-hosted runner on djnemas.de (label: miku-screen-recorder-release-builder)
+    runs-on: [ self-hosted, miku-screen-recorder-release-builder ]
+
+    defaults:
+      run:
+        shell: pwsh
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Read version
+        id: version
+        run: |
+          [xml]$proj = Get-Content MikuScreenRecorder/MikuScreenRecorder.csproj
+          $version = ($proj.Project.PropertyGroup | Where-Object { $_.Version } | Select-Object -First 1).Version
+          $tag = "v$version"
+          $exists = [bool](git tag --list $tag)
+          "version=$version" >> $env:GITHUB_OUTPUT
+          "tag=$tag" >> $env:GITHUB_OUTPUT
+          "exists=$($exists.ToString().ToLower())" >> $env:GITHUB_OUTPUT
+          if ($exists) { Write-Host "Release $tag already exists - skipping. Increase <Version> in the .csproj to create a new release." }
+
+      - name: Publish (framework-dependent, x64)
+        if: steps.version.outputs.exists == 'false'
+        run: >
+          dotnet publish MikuScreenRecorder/MikuScreenRecorder.csproj
+          -c Release -r win-x64 --self-contained false
+          -p:PublishSingleFile=true
+          -p:DebugType=none
+          -o publish/x64
+
+      - name: Publish (self-contained, x64)
+        if: steps.version.outputs.exists == 'false'
+        run: >
+          dotnet publish MikuScreenRecorder/MikuScreenRecorder.csproj
+          -c Release -r win-x64 --self-contained true
+          -p:PublishSingleFile=true
+          -p:IncludeNativeLibrariesForSelfExtract=true
+          -p:EnableCompressionInSingleFile=true
+          -p:DebugType=none
+          -o publish/x64-selfcontained
+
+      - name: Prepare assets
+        if: steps.version.outputs.exists == 'false'
+        run: |
+          $tag = "${{ steps.version.outputs.tag }}"
+          Remove-Item assets -Recurse -Force -ErrorAction SilentlyContinue
+          New-Item -ItemType Directory -Force -Path assets | Out-Null
+          Copy-Item publish/x64/MikuScreenRecorder.exe "assets/MikuScreenRecorder-$tag-win-x64.exe"
+          Copy-Item publish/x64-selfcontained/MikuScreenRecorder.exe "assets/MikuScreenRecorder-$tag-win-x64-selfcontained.exe"
+
+      - name: Create release
+        if: steps.version.outputs.exists == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $tag = "${{ steps.version.outputs.tag }}"
+          $notes = @"
+          ## Downloads
+
+          - **MikuScreenRecorder-$tag-win-x64.exe** - small download, requires the [.NET Desktop Runtime](https://dotnet.microsoft.com/download) 8, 9 or 10
+          - **MikuScreenRecorder-$tag-win-x64-selfcontained.exe** - larger download, runs without an installed .NET runtime
+          "@
+          gh release create $tag (Get-ChildItem assets/*.exe).FullName `
+            --title "MikuScreenRecorder $tag" `
+            --notes $notes `
+            --generate-notes `
+            --target "${{ github.sha }}"
+
+      - name: Clean up
+        if: always()
+        run: Remove-Item publish, assets -Recurse -Force -ErrorAction SilentlyContinue

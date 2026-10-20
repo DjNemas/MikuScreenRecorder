@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MenuScreenshot" xml:space="preserve"><value>Screenshot (Druck)</value></data>
+  <data name="MenuGifStart" xml:space="preserve"><value>GIF-Aufnahme starten (Strg+Druck)</value></data>
+  <data name="MenuGifStop" xml:space="preserve"><value>GIF-Aufnahme stoppen (Strg+Druck)</value></data>
+  <data name="MenuCopyToClipboard" xml:space="preserve"><value>In Zwischenablage kopieren</value></data>
+  <data name="MenuSaveToFile" xml:space="preserve"><value>Als Datei speichern</value></data>
+  <data name="MenuStartWithWindows" xml:space="preserve"><value>Mit Windows starten</value></data>
+  <data name="MenuOpenFolder" xml:space="preserve"><value>Speicherordner öffnen</value></data>
+  <data name="MenuSettings" xml:space="preserve"><value>Einstellungen...</value></data>
+  <data name="MenuExit" xml:space="preserve"><value>Beenden</value></data>
+  <data name="HotkeyFailed" xml:space="preserve"><value>Hotkey konnte nicht registriert werden. Evtl. belegt ein anderes Programm (z.B. Snipping Tool) die Druck-Taste. Unter Windows: Einstellungen &gt; Barrierefreiheit &gt; Tastatur &gt; 'Druck-Taste zum Öffnen des Bildschirmausschnitts verwenden' deaktivieren.</value></data>
+  <data name="Running" xml:space="preserve"><value>ScreenRecorder läuft. Druck = Screenshot, Strg+Druck = GIF.</value></data>
+  <data name="SelectScreenshotRegion" xml:space="preserve"><value>Bereich für Screenshot auswählen</value></data>
+  <data name="SelectGifRegion" xml:space="preserve"><value>Bereich für GIF-Aufnahme auswählen (Stopp mit Strg+Druck)</value></data>
+  <data name="SelectionCancelHint" xml:space="preserve"><value>(ESC / Rechtsklick = Abbrechen)</value></data>
+  <data name="ScreenshotSaved" xml:space="preserve"><value>Screenshot gespeichert:
+{0}</value></data>
+  <data name="ScreenshotCopied" xml:space="preserve"><value>Screenshot in Zwischenablage kopiert.</value></data>
+  <data name="GifSaved" xml:space="preserve"><value>GIF gespeichert:
+{0}</value></data>
+  <data name="GifCopied" xml:space="preserve"><value>GIF in Zwischenablage kopiert.</value></data>
+  <data name="GifStarted" xml:space="preserve"><value>GIF-Aufnahme gestartet. Strg+Druck zum Beenden.</value></data>
+  <data name="TrayRecording" xml:space="preserve"><value>ScreenRecorder - Aufnahme läuft...</value></data>
+  <data name="ErrorTitle" xml:space="preserve"><value>ScreenRecorder - Fehler</value></data>
+  <data name="Stop" xml:space="preserve"><value>Stopp</value></data>
+  <data name="SettingsTitle" xml:space="preserve"><value>ScreenRecorder - Einstellungen</value></data>
+  <data name="SettingsSavePath" xml:space="preserve"><value>Speicherort:</value></data>
+  <data name="SettingsGifFps" xml:space="preserve"><value>GIF Bilder/Sekunde:</value></data>
+  <data name="SettingsGifMax" xml:space="preserve"><value>GIF max. Dauer (s):</value></data>
+  <data name="SettingsLanguage" xml:space="preserve"><value>Sprache:</value></data>
+  <data name="SettingsAutoClipboard" xml:space="preserve"><value>Automatisch in Zwischenablage kopieren</value></data>
+  <data name="SettingsAutoSave" xml:space="preserve"><value>Automatisch als Datei speichern</value></data>
+  <data name="SettingsCursor" xml:space="preserve"><value>Mauszeiger mit aufnehmen</value></data>
+  <data name="SettingsNotifications" xml:space="preserve"><value>Benachrichtigungen anzeigen</value></data>
+  <data name="SettingsDither" xml:space="preserve"><value>GIF-Dithering (weichere Farbverläufe, größere Datei)</value></data>
+  <data name="Cancel" xml:space="preserve"><value>Abbrechen</value></data>
+</root>

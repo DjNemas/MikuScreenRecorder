@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MenuScreenshot" xml:space="preserve"><value>Screenshot (Print)</value></data>
+  <data name="MenuGifStart" xml:space="preserve"><value>Start GIF recording (Ctrl+Print)</value></data>
+  <data name="MenuGifStop" xml:space="preserve"><value>Stop GIF recording (Ctrl+Print)</value></data>
+  <data name="MenuCopyToClipboard" xml:space="preserve"><value>Copy to clipboard</value></data>
+  <data name="MenuSaveToFile" xml:space="preserve"><value>Save as file</value></data>
+  <data name="MenuStartWithWindows" xml:space="preserve"><value>Start with Windows</value></data>
+  <data name="MenuOpenFolder" xml:space="preserve"><value>Open save folder</value></data>
+  <data name="MenuSettings" xml:space="preserve"><value>Settings...</value></data>
+  <data name="MenuExit" xml:space="preserve"><value>Exit</value></data>
+  <data name="HotkeyFailed" xml:space="preserve"><value>Hotkey could not be registered. Another program (e.g. Snipping Tool) may be using the Print key. In Windows: Settings &gt; Accessibility &gt; Keyboard &gt; disable 'Use the Print screen key to open screen capture'.</value></data>
+  <data name="Running" xml:space="preserve"><value>ScreenRecorder is running. Print = screenshot, Ctrl+Print = GIF.</value></data>
+  <data name="SelectScreenshotRegion" xml:space="preserve"><value>Select area for screenshot</value></data>
+  <data name="SelectGifRegion" xml:space="preserve"><value>Select area for GIF recording (stop with Ctrl+Print)</value></data>
+  <data name="SelectionCancelHint" xml:space="preserve"><value>(ESC / right click = cancel)</value></data>
+  <data name="ScreenshotSaved" xml:space="preserve"><value>Screenshot saved:
+{0}</value></data>
+  <data name="ScreenshotCopied" xml:space="preserve"><value>Screenshot copied to clipboard.</value></data>
+  <data name="GifSaved" xml:space="preserve"><value>GIF saved:
+{0}</value></data>
+  <data name="GifCopied" xml:space="preserve"><value>GIF copied to clipboard.</value></data>
+  <data name="GifStarted" xml:space="preserve"><value>GIF recording started. Ctrl+Print to stop.</value></data>
+  <data name="TrayRecording" xml:space="preserve"><value>ScreenRecorder - Recording...</value></data>
+  <data name="ErrorTitle" xml:space="preserve"><value>ScreenRecorder - Error</value></data>
+  <data name="Stop" xml:space="preserve"><value>Stop</value></data>
+  <data name="SettingsTitle" xml:space="preserve"><value>ScreenRecorder - Settings</value></data>
+  <data name="SettingsSavePath" xml:space="preserve"><value>Save location:</value></data>
+  <data name="SettingsGifFps" xml:space="preserve"><value>GIF frames/second:</value></data>
+  <data name="SettingsGifMax" xml:space="preserve"><value>GIF max. duration (s):</value></data>
+  <data name="SettingsLanguage" xml:space="preserve"><value>Language:</value></data>
+  <data name="SettingsAutoClipboard" xml:space="preserve"><value>Automatically copy to clipboard</value></data>
+  <data name="SettingsAutoSave" xml:space="preserve"><value>Automatically save as file</value></data>
+  <data name="SettingsCursor" xml:space="preserve"><value>Capture mouse cursor</value></data>
+  <data name="SettingsNotifications" xml:space="preserve"><value>Show notifications</value></data>
+  <data name="SettingsDither" xml:space="preserve"><value>GIF dithering (smoother gradients, larger file)</value></data>
+  <data name="Cancel" xml:space="preserve"><value>Cancel</value></data>
+</root>

@@ -1,0 +1,27 @@
+## Visual Studio / .NET
+.vs/
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+[Ll]og/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.rsuser
+
+## Build-Ausgaben
+[Pp]ublish/
+*.nupkg
+artifacts/
+
+## Rider / VS Code
+.idea/
+.vscode/
+
+## Sonstiges
+*.log
+Thumbs.db
+Desktop.ini
+.DS_Store
