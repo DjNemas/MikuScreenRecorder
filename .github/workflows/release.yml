@@ -70,17 +70,41 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           $tag = "${{ steps.version.outputs.tag }}"
+          $headers = @{
+            Authorization          = "Bearer $env:GH_TOKEN"
+            Accept                 = "application/vnd.github+json"
+            "X-GitHub-Api-Version" = "2022-11-28"
+          }
+          $api = "https://api.github.com/repos/${{ github.repository }}"
+
           $notes = @"
           ## Downloads
 
           - **MikuScreenRecorder-$tag-win-x64.exe** - small download, requires the [.NET Desktop Runtime](https://dotnet.microsoft.com/download) 8, 9 or 10
           - **MikuScreenRecorder-$tag-win-x64-selfcontained.exe** - larger download, runs without an installed .NET runtime
+
           "@
-          gh release create $tag (Get-ChildItem assets/*.exe).FullName `
-            --title "MikuScreenRecorder $tag" `
-            --notes $notes `
-            --generate-notes `
-            --target "${{ github.sha }}"
+
+          $generated = Invoke-RestMethod -Method Post -Uri "$api/releases/generate-notes" -Headers $headers `
+            -ContentType "application/json" `
+            -Body (@{ tag_name = $tag; target_commitish = "${{ github.sha }}" } | ConvertTo-Json)
+
+          $release = Invoke-RestMethod -Method Post -Uri "$api/releases" -Headers $headers `
+            -ContentType "application/json" `
+            -Body (@{
+              tag_name         = $tag
+              target_commitish = "${{ github.sha }}"
+              name             = "MikuScreenRecorder $tag"
+              body             = $notes + $generated.body
+            } | ConvertTo-Json)
+
+          $uploadUrl = $release.upload_url -replace '\{.*\}$', ''
+          foreach ($file in Get-ChildItem assets/*.exe) {
+            Write-Host "Uploading $($file.Name)"
+            Invoke-RestMethod -Method Post -Uri "$uploadUrl`?name=$($file.Name)" -Headers $headers `
+              -ContentType "application/octet-stream" -InFile $file.FullName | Out-Null
+          }
+          Write-Host "Release created: $($release.html_url)"
 
       - name: Clean up
         if: always()
